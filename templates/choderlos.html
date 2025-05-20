@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>choderlos- Edit</title>
+    <style>
+        body {
+            font-family: Georgia, serif;
+            margin: 20px auto;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        textarea {
+            width: 100%;
+            height: 600px;
+            font-size: 16px;
+            line-height: 1.5;
+            padding: 10px;
+            box-sizing: border-box;
+            resize: vertical;
+            margin-bottom: 15px;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Choderlos de Laclos - Write Here</h1>
+
+    {% if saved_msg %}
+    <p style="color: green; font-weight: bold;">{{ saved_msg }}</p>
+    {% endif %}
+
+    <form method="POST">
+        <textarea name="text" placeholder="Type your text here...">{{ text }}</textarea>
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>
