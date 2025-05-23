@@ -1,13 +1,96 @@
 @font-face {
   font-family: 'CustomTitleFont';
-  src: url('/static/fonts/grooved.ttf') format('truetype'),
-       url('/static/fonts/grooved.ttf') format('truetype');
+  src: url('/static/fonts/grooved.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
-#site-title {
-  font-family: 'CustomTitleFont', sans-serif;
-  font-size: 150px;
+@font-face {
+  font-family: 'Gulim';
+  src: url('/static/fonts/lekton.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
+body {
+  width: 100% !important;
+  margin: 0 !important;
+  padding-top: 2em;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-left: 3vw;
+  padding-top: 60vh;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+#site-title {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: 'CustomTitleFont', sans-serif;
+  font-size: 10vw;
+  color: black;
+  user-select: none;
+  z-index: 1000;
+}
+
+#site-title::after {
+  content: "DYOT";  /* good */
+  position: absolute;
+  top: 0; /* good */
+  left: 0;
+  color: rgba(0, 0, 0, 0.25); /* good */
+  z-index: -1; /* good */
+  white-space: nowrap; /* good */
+  transform-origin: bottom left;
+  transform: translate(-30px, -10px) skew(50deg, 0deg);
+  filter: blur(1px);
+  font-family: 'CustomTitleFont', sans-serif;
+  font-size: 9.5vw;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  user-select: none;
+}
+
+.nav-list {
+  margin-left: 5em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding-left: 0;
+  max-width: 40em;
+}
+
+.nav-list li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: none;
+}
+
+.nav-list a,
+.nav-list a:visited,
+.nav-list a:hover,
+.nav-list a:active,
+.nav-list a:focus {
+  font-family: 'Gulim', sans-serif;
+  font-size: clamp(5px, 2vw, 120px);
+  text-decoration: none !important;
+  color: inherit;
+  outline: none !important;
+  box-shadow: none !important;
+  cursor: pointer;
+}
+
+.login-item {
+  margin-top: auto;
+  padding-left: 10px;
+}

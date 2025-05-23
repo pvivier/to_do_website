@@ -1,8 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    width: 50%;
-    margin: auto;
-    padding-top: 2em;
+    background-color: #e6e3dc;
 }
 
 form input {
