@@ -1,32 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>No Access</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background: #000;
-            color: white;
-            margin: 0; padding: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        video {
-            width: 640px;
-            height: 360px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Go Away! this page isn't for you. </h1>
-    <h1>You don't have access to the real suprises page, but here is donald to cheer you up</h1>
-    <video autoplay loop controls>
-        <source src="{{ url_for('static', filename='donaldv2.mp4') }}" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}No Access{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='donald.css') }}">
+{% endblock %}
+
+{% block content %}
+<h1>Go Away! This page isn't for you.</h1>
+<h1>You don't have access to the real surprises page, but here is Donald to cheer you up</h1>
+
+<video autoplay loop controls>
+    <source src="{{ url_for('static', filename='donaldv2.mp4') }}" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+{% endblock %}

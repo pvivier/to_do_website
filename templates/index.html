@@ -1,26 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <title>Welcome</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <div class="container">
-        <h1>Fuck Google Docs ill do it myself</h1>
-        {% if session.username %}
-            <p>You are logged in as <strong>{{ session.username }}</strong>.
-                <a href="{{ url_for('logout') }}">Logout</a>
-            </p>
-        {% else %}
-            <p><a href="{{ url_for('login') }}">Login</a></p>
-        {% endif %}
-            <ul>
-                <li><a href="{{ url_for('choderlos') }}">Chorderlos De Laclos</a></li>
-                <li><a href="{{ url_for('surprises') }}">surprises</a></li>
-                <li><a href="{{ url_for('random_stuff') }}">random</a></li>
-            </ul>
-        </nav>
-    </div>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+{% endblock %}
+
+{% block content %}
+<h1 id="site-title">dyot</h1>
+
+{% if session.username %}
+    <p>You are logged in as <strong>{{ session.username }}</strong>.
+        <a href="{{ url_for('auth.logout') }}">Logout</a>
+    </p>
+{% else %}
+    <p><a href="{{ url_for('auth.login') }}">Login</a></p>
+{% endif %}
+
+<ul>
+    <li><a href="{{ url_for('views.choderlos') }}">Choderlos de Laclos</a></li>
+    <li><a href="{{ url_for('views.surprises') }}">Surprises</a></li>
+    <li><a href="{{ url_for('views.random_stuff') }}">Random</a></li>
+</ul>
+{% endblock %}

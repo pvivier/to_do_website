@@ -1,47 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>choderlos- Edit</title>
-    <style>
-        body {
-            font-family: Georgia, serif;
-            margin: 20px auto;
-            max-width: 800px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        textarea {
-            width: 100%;
-            height: 600px;
-            font-size: 16px;
-            line-height: 1.5;
-            padding: 10px;
-            box-sizing: border-box;
-            resize: vertical;
-            margin-bottom: 15px;
-        }
-        button {
-            font-size: 18px;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Choderlos de Laclos</h1>
+{% extends "base.html" %}
 
-        {% if saved_msg %}
-        <p style="color: green; font-weight: bold;">{{ saved_msg }}</p>
-        {% endif %}
+{% block title %}Choderlos - Edit{% endblock %}
 
-        <form method="POST">
-            <textarea name="text" placeholder="Type your text here...">{{ text }}</textarea>
-            <button type="submit">Save</button>
-        </form>
-        <a href="{{ url_for('index') }}" style="display: inline-block; margin-top: 20px;">Back to Home</a>
-    </div>
-</body>
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='choderlos.css') }}">
+{% endblock %}
 
-</html>
+{% block content %}
+<h1>Choderlos de Laclos</h1>
+
+{% if saved_msg %}
+<p class="saved-message">{{ saved_msg }}</p>
+{% endif %}
+
+<form method="POST">
+    <textarea name="text" placeholder="Type your text here...">{{ text }}</textarea>
+    <button type="submit">Save</button>
+</form>
+
+<a href="{{ url_for('views.index') }}" class="back-link">Back to Home</a>
+{% endblock %}

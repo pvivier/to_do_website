@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'CustomTitleFont';
+  src: url('/static/fonts/grooved.ttf') format('truetype'),
+       url('/static/fonts/grooved.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+#site-title {
+  font-family: 'CustomTitleFont', sans-serif;
+  font-size: 150px;
+}
+

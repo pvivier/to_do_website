@@ -1,15 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <title>random</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <div class="container">
-        <h1>random</h1>
-        <p>the weirder the better</p>
-        <a href="{{ url_for('index') }}" style="display: inline-block; margin-top: 20px;">Back to Home</a>
-    </div>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Random Prompt Board{% endblock %}
+
+{% block content %}
+<div class="board-container">
+  <!-- INPUT BOX LEFT & CENTERED -->
+  <div class="left-panel">
+    <form class="prompt-form" method="POST">
+      <textarea name="text" placeholder=""></textarea>
+      <button type="submit" aria-label="Submit">▷</button>
+    </form>
+
+    {% if session.username %}
+      <p style="margin-top: 12px; font-size: 14px; color: #666;">
+        Logged in as <strong>{{ session.username }}</strong>
+        | <a href="{{ url_for('auth.logout') }}">Logout</a>
+      </p>
+    {% else %}
+      <p style="margin-top: 12px; font-size: 14px;">
+        <a href="{{ url_for('auth.login') }}">Login</a> to track your prompts
+      </p>
+    {% endif %}
+  </div>
+
+  <!-- PROMPT BOXES TO THE RIGHT -->
+  <div class="right-panel">
+    {% if prompts %}
+      {% for p in prompts %}
+        <div class="prompt-box">
+          <div>{{ p.text }}</div>
+          <div class="prompt-box-footer">{{ p.username }} — {{ p.date }}</div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p style="color: #999;">No prompts yet. Submit one on the left!</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

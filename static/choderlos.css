@@ -1,0 +1,38 @@
+body {
+    font-family: Georgia, serif;
+}
+
+.container {
+    margin: 20px auto;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+textarea {
+    width: 100%;
+    height: 600px;
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 10px;
+    box-sizing: border-box;
+    resize: vertical;
+    margin-bottom: 15px;
+}
+
+button {
+    font-size: 18px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.saved-message {
+    color: green;
+    font-weight: bold;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+}
