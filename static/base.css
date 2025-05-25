@@ -3,6 +3,19 @@ body {
     background-color: #e6e3dc;
 }
 
+#site-title::after {
+  content: var(--site-title-shadow-text);
+  /* other styles */
+}
+
+.container {
+    max-width: 1200px;
+    width: 90vw;
+    margin: 20px auto;
+    box-sizing: border-box;
+    padding: 0 15px;
+}
+
 form input {
     padding: 0.5em;
     margin-right: 0.5em;

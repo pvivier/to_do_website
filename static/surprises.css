@@ -5,7 +5,7 @@ body {
 .container {
     margin: 20px auto;
     width: 90%;           /* almost full width on small screens */
-    max-width: 400px;     /* don't grow too wide on large screens */
+    max-width: 900px;     /* don't grow too wide on large screens */
     min-width: 300px;     /* avoid being too narrow */
     display: flex;
     flex-direction: column;

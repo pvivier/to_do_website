@@ -7,6 +7,7 @@ from utils import load_prompts, save_prompts
 views_bp = Blueprint("views", __name__)
 PROMPTS_FILE = "texts/prompts.json"
 TEXT_FILE = "texts/choderlos.txt"
+SURPRISES_FILE = "texts/surprises.txt"
 
 success_messages = [
     "✔️ Saved successfully!",
@@ -16,7 +17,8 @@ success_messages = [
 
 @views_bp.route("/")
 def index():
-    return render_template("index.html")
+    username = session.get('username')  # or however you store login info
+    return render_template('index.html', username=username)
 
 @views_bp.route("/choderlos", methods=["GET", "POST"])
 def choderlos():
@@ -42,10 +44,11 @@ def random_stuff():
 
     if request.method == "POST":
         new_text = request.form.get("text", "").strip()
-        if new_text and "username" in session:
+        if new_text:
+            username = session.get("username", "unknown")  # trim to 4 letters
             new_prompt = {
                 "text": new_text,
-                "username": session["username"],
+                "username": username,
                 "date": datetime.now().strftime("%Y-%m-%d")
             }
             prompts.append(new_prompt)
@@ -57,14 +60,30 @@ def random_stuff():
 
             return render_template("random.html", prompts=prompts_to_show)
 
-    return render_template("random.html", prompts=None)
+    # GET request — show 3 random prompts from memory (or fewer if not enough)
+    initial_prompts = random.sample(prompts, k=min(3, len(prompts))) if prompts else []
+    return render_template("random.html", prompts=initial_prompts)
 
-@views_bp.route("/surprises")
+@views_bp.route("/surprises", methods=["GET", "POST"])
 def surprises():
-    if session.get("username") == "pierre":
-        return render_template("surprises.html")
-    else:
+    if session.get("username") != "pierre":
         return redirect(url_for("views.donald"))
+
+    if request.method == "POST":
+        new_text = request.form.get("text")
+        os.makedirs(os.path.dirname(SURPRISES_FILE), exist_ok=True)
+        with open(SURPRISES_FILE, "w", encoding="utf-8") as f:
+            f.write(new_text or "")
+        msg = random.choice(success_messages)
+        return redirect(url_for("views.surprises", saved_msg=msg))
+
+    saved_text = ""
+    if os.path.exists(SURPRISES_FILE):
+        with open(SURPRISES_FILE, "r", encoding="utf-8") as f:
+            saved_text = f.read()
+
+    saved_msg = request.args.get("saved_msg", default=None)
+    return render_template("surprises.html", text=saved_text, saved_msg=saved_msg)
 
 @views_bp.route("/donald")
 def donald():

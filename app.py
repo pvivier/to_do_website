@@ -3,6 +3,10 @@ from auth import auth_bp
 from views import views_bp
 import os
 
+#git add .
+#git commit -m "Update code and stop tracking choderlos.txt"
+#git push
+
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", os.urandom(24))
 

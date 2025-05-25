@@ -1,11 +1,22 @@
 {% extends "base.html" %}
 
-{% block title %}Surprises{% endblock %}
+{% block title %}Surprises - Edit{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='surprises.css') }}">
+{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>Surprises</h1>
-    <p>you shouldn't be here ms</p>
-    <a href="{{ url_for('views.index') }}">Back to Home</a>
-</div>
+<h1>Surprises</h1>
+
+{% if saved_msg %}
+<p class="saved-message">{{ saved_msg }}</p>
+{% endif %}
+<form method="POST" style="width: 100%;">
+  <textarea name="text" placeholder="Type your surprises here...">{{ text }}</textarea>
+  <div class="button-container">
+    <a href="{{ url_for('views.index') }}" class="back-link">Back to Home</a>
+    <button type="submit">Save</button>
+  </div>
+</form>
 {% endblock %}

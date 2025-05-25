@@ -14,9 +14,8 @@
     <li><a href="{{ url_for('views.surprises') }}">Surprises</a></li>
     <li><a href="{{ url_for('views.random_stuff') }}">Random</a></li>
 
-    {% if session.username %}
+    {% if username %}
         <li class="login-item">
-            You are logged in as <strong>{{ session.username }}</strong>.
             <a href="{{ url_for('auth.logout') }}">Logout</a>
         </li>
     {% else %}

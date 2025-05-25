@@ -7,7 +7,7 @@
 
 @font-face {
   font-family: 'Gulim';
-  src: url('/static/fonts/lekton.ttf') format('truetype');
+  src: url('/static/fonts/hollen.otf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -30,20 +30,20 @@ body {
 
 #site-title {
   position: fixed;
-  top: 50%;
+  top: 45%;
   right: 0;
   transform: translateY(-50%);
   writing-mode: vertical-rl;
   text-orientation: upright;
   font-family: 'CustomTitleFont', sans-serif;
-  font-size: 10vw;
+  font-size: 8.5vw;
   color: black;
   user-select: none;
   z-index: 1000;
 }
 
 #site-title::after {
-  content: "DYOT";  /* good */
+  content: var(--shadow-text);  /* good */
   position: absolute;
   top: 0; /* good */
   left: 0;
@@ -51,10 +51,10 @@ body {
   z-index: -1; /* good */
   white-space: nowrap; /* good */
   transform-origin: bottom left;
-  transform: translate(-30px, -10px) skew(50deg, 0deg);
+  transform: translate(-50px, -10px) skew(50deg, 0deg);
   filter: blur(1px);
   font-family: 'CustomTitleFont', sans-serif;
-  font-size: 9.5vw;
+  font-size: 8vw;
   writing-mode: vertical-rl;
   text-orientation: upright;
   user-select: none;
@@ -82,7 +82,7 @@ body {
 .nav-list a:active,
 .nav-list a:focus {
   font-family: 'Gulim', sans-serif;
-  font-size: clamp(5px, 2vw, 120px);
+  font-size: clamp(5px, 2.5vw, 120px);
   text-decoration: none !important;
   color: inherit;
   outline: none !important;

@@ -12,11 +12,17 @@
 {% if saved_msg %}
 <p class="saved-message">{{ saved_msg }}</p>
 {% endif %}
-
-<form method="POST">
-    <textarea name="text" placeholder="Type your text here...">{{ text }}</textarea>
+<form method="POST" style="width: 100%;">
+  <textarea name="text" placeholder="Type your text here...">{{ text }}</textarea>
+  <div class="button-container">
+    <a href="{{ url_for('views.index') }}" class="back-link">Back to Home</a>
     <button type="submit">Save</button>
+  </div>
 </form>
-
-<a href="{{ url_for('views.index') }}" class="back-link">Back to Home</a>
 {% endblock %}
+
+
+
+
+
+

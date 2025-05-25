@@ -1,0 +1,138 @@
+/* Layout container for the whole board */
+.page-title {
+  text-align: center;
+  margin: 5vh 0 2vh 0; /* Big top gap, smaller bottom gap */
+  font-family: Georgia, serif;
+  font-weight: normal;
+  font-size: 2rem;
+  color: #333;
+}
+
+body {
+  padding-top: 5vh;  /* gap above the title */
+  margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #e6e3dc;
+}
+
+.board-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10vw;
+  margin-top: 1vh; /* smaller gap below title */
+  padding: 2em;
+  flex-wrap: wrap;
+}
+
+/* Left side input panel */
+.left-panel {
+  flex: 1.2;
+  max-width: 800px;
+}
+
+/* Right side for prompt display */
+.right-panel {
+  flex: 2;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+/* Prompt submission form */
+.prompt-form textarea {
+  width: 100%;
+  height: 150px; /* Match prompt box height */
+  font-size: 1rem;
+  padding: 0.75em;
+  resize: none;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fdfcf9;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+/* Container for buttons below textarea */
+.button-container {
+  margin-top: 0.75em;
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+}
+
+/* Back to Home button */
+.back-link {
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  padding: 0.3em 0.8em;
+  border: 2px solid #d6c6a5;
+  background-color: transparent;
+  color: black;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  height: 42px;
+  line-height: 1;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease;
+}
+
+
+.back-link:hover {
+  background-color: #d6c6a5;
+}
+.prompt-form button {
+  background-color: transparent;
+  border: 2px solid #d6c6a5;
+  cursor: pointer;
+  padding: 0.3em 0.8em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+  height: 42px;
+  box-sizing: border-box;
+}
+/* Exact match for border box */
+.prompt-form button::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* shorthand for top: 0; right: 0; bottom: 0; left: 0 */
+  border-radius: 6px;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+  z-index: -1;
+}
+
+.prompt-form button:hover::before {
+  background-color: #d6c6a5;
+}
+
+.prompt-form button img {
+  height: 1.5em;
+  width: auto;
+  display: block;
+}
+
+/* Individual prompt boxes */
+.prompt-box {
+  background-color: white;
+  padding: 1em;
+  border-radius: 6px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+  font-family: inherit;
+}
+
+/* Footer with username and date */
+.prompt-box-footer {
+  margin-top: 0.5em;
+  font-size: 0.9em;
+  color: #888;
+}
