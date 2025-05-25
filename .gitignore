@@ -1,2 +1,5 @@
 __pycache__/
 *.pyc
+/texts/choderlos.txt
+/texts/surprises.txt
+/texts/prompts.json
