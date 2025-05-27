@@ -7,7 +7,7 @@ from models import Prompt
 views_bp = Blueprint("views", __name__)
 
 success_messages = [
-    "✔️ Saved successfully!",
+    "✔️ Saved successfully!", "✔️ Saved successfully!",
     "💦🍑 Juicy", "🤐 Boring!", "🤖 Bip Bop Submission Complete", "⚽️ Allez Brest!",
     "🤬 You should be naked", "⛏️ Travail Termine", "🎂 Happy Birthday.... again"
 ]
