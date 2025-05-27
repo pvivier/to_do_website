@@ -1,22 +1,27 @@
-from flask import Flask, render_template
-from auth import auth_bp
-from views import views_bp
+from flask import Flask
+from extensions import db
+from flask_migrate import Migrate
+from auth_routes import auth_bp
+from views_routes import views_bp
 import os
+from dotenv import load_dotenv
 
-#git add .
-#git commit -m "Update code and stop tracking choderlos.txt"
-#git push
+load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", os.urandom(24))
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-# Register blueprints
+db.init_app(app)
+migrate = Migrate(app, db)
+
 app.register_blueprint(auth_bp)
 app.register_blueprint(views_bp)
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return "Hello, Flask!"
 
 if __name__ == "__main__":
     app.run(debug=True)
