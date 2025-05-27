@@ -4,7 +4,11 @@ auth_bp = Blueprint("auth", __name__)
 
 users = {
     "pierre": "297bmz48",
-    "galeuse": "pierreleplusbeau"
+    "galeuse": "pierreleplusbeau",
+    "marie-sarah": "merteuil1782",
+    "kerstin": "Christi@n1",
+    "christian": "Christi@n1",
+    "laurent": "Christi@n1"
 }
 
 @auth_bp.route("/login", methods=["GET", "POST"])
